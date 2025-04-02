@@ -1,0 +1,56 @@
+<form (ngSubmit)="onSubmit()" #productForm="ngForm">
+
+    <div>
+        <input type="text" class="form-control my-2" placeholder="Name" name="name" [(ngModel)]="product.name"
+            #name="ngModel" required minlength="4">
+        <div *ngIf=" name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            @if (name.errors!['required']) {
+            <div>
+                Nombre es requerido
+            </div>
+            }
+            @if (name.errors!['minlength']) {
+            <div>
+                Nombre debe tener mas de 4 caracteres!!
+            </div>
+            }
+        </div>
+    </div>
+    <div>
+        <input type="text" class="form-control my-2" placeholder="Description" name="description"
+            [(ngModel)]="product.description" #description="ngModel" required minlength="5">
+        <div *ngIf=" description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+            @if (description.errors!['required']) {
+            <div>
+                Descripcion es requerido
+            </div>
+            }
+            @if (description.errors!['minlength']) {
+            <div>
+                Descripcion debe tener mas de 5 caracteres!!
+            </div>
+            }
+        </div>
+    </div>
+    <div>
+        <input type="number" class="form-control my-2" placeholder="Price" name="price" [(ngModel)]="product.price"
+            #price="ngModel" required min="5">
+        <div *ngIf=" price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+            @if (price.errors!['required']) {
+            <div>
+                Precio es requerido
+            </div>
+            }
+            @if (price.errors!['min']) {
+            <div>
+                Precio debe ser mayor que 5!!
+            </div>
+            }
+        </div>
+    </div>
+    <div>
+        <button [disabled]="!productForm.valid" class="btn btn-primary my-2" type="submit">{{product.id > 0? 'Update':
+            'Create'}}</button>
+        <button class="btn btn-primary my-2 mx-2" (click)="clean()" type="button">Clean</button>
+    </div>
+</form>
