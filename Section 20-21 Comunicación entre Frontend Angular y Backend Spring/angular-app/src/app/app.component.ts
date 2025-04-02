@@ -7,7 +7,7 @@ import { ProductComponent } from "./products/components/product/product.componen
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [CommonModule, RouterOutlet, ProductComponent]
+  imports: [CommonModule, ProductComponent]
 })
 export class AppComponent {
   title = 'angular-app';
